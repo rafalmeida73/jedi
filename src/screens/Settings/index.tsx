@@ -1,13 +1,13 @@
 import React from "react";
 
-import { Text } from "react-native";
+import { Header } from "../../components/Header";
 
 import { Container } from "./styles";
 
 export const Settings = () => {
   return (
     <Container>
-      <Text>Settings</Text>
+      <Header title="Settings" />
     </Container>
   );
 };

@@ -46,13 +46,11 @@ export function Routes() {
           tabBarShowLabel: false,
           tabBarHideOnKeyboard: true,
           tabBarStyle: {
-            height: scale(90),
-            paddingVertical: 0,
-            marginHorizontal: scale(20),
-            marginBottom: scale(30),
-            borderRadius: scale(30),
-            backgroundColor: theme.colors.background.primary,
             position: "absolute",
+            height: scale(70),
+            marginHorizontal: scale(20),
+            bottom: scale(15),
+            borderRadius: scale(30),
             borderColor: theme.colors.background.secondary,
           },
         }}

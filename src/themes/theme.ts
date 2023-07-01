@@ -11,6 +11,7 @@ const styledComponentsTheme = {
       primary: "#FFFFFF",
       secondary: "#EAEAEA",
       black: "#222222",
+      gray: "#BABABA",
     },
     status: {
       high: "#30AD33",
