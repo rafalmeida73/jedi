@@ -2,9 +2,9 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { scale } from "react-native-size-matters";
 import styled, { css } from "styled-components/native";
 
-import { ArrowIconProps } from "./types";
+import { PriceVariationProps } from "./types";
 
-export const Container = styled.View`
+export const Container = styled.TouchableOpacity`
   width: 100%;
   flex-direction: row;
   justify-content: space-between;
@@ -30,6 +30,7 @@ export const CryptoLogo = styled.Image`
 export const CryptoSymbol = styled.Text`
   font-weight: bold;
   font-size: ${scale(15)}px;
+  text-transform: uppercase;
 `;
 
 export const CryptoName = styled.Text``;
@@ -43,7 +44,18 @@ export const CryptoPrice = styled.Text`
   font-size: ${scale(15)}px;
 `;
 
-export const CryptoPriceVariation = styled.Text``;
+export const CryptoPriceVariation = styled.Text<PriceVariationProps>`
+  font-weight: bold;
+
+  ${({ isUp, theme }) =>
+    isUp
+      ? css`
+          color: ${theme.colors.status.high};
+        `
+      : css`
+          color: ${theme.colors.status.low};
+        `}
+`;
 
 export const CryptoPriceVariationContainer = styled.View`
   flex-direction: row;
@@ -53,7 +65,7 @@ export const CryptoPriceVariationContainer = styled.View`
 
 export const Icon = styled(MaterialCommunityIcons).attrs(({ theme }) => ({
   size: scale(15),
-}))<ArrowIconProps>`
+}))<PriceVariationProps>`
   ${({ isUp, theme }) =>
     isUp
       ? css`

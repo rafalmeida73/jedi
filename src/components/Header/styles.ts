@@ -1,8 +1,11 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { scale } from "react-native-size-matters";
+import { getStatusBarHeight } from "react-native-status-bar-height";
 import styled from "styled-components/native";
 
-export const Container = styled.View``;
+export const Container = styled.View`
+  margin-top: ${getStatusBarHeight(true)}px;
+`;
 
 export const Title = styled.Text`
   margin-top: ${scale(16)}px;

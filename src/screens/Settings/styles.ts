@@ -6,3 +6,8 @@ export const Container = styled.View`
   padding: 0 ${scale(16)}px;
   margin-top: ${scale(16)}px;
 `;
+export const Logout = styled.Text`
+  color: #152c07;
+  font-size: ${scale(16)}px;
+  font-weight: 700;
+`;

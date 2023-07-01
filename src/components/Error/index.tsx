@@ -3,15 +3,11 @@ import React, { useRef } from "react";
 import AnimatedLottieView from "lottie-react-native";
 import { scale } from "react-native-size-matters";
 
-import animationLoading from "../../assets/loading.json";
-import { LoadingProps } from "./types";
+import animationError from "../../assets/error.json";
 
-import { Container } from "./styles";
+import { Container, Title } from "./styles";
 
-export const Loading: React.FC<LoadingProps> = ({
-  height = 200,
-  widht = 200,
-}) => {
+export const Error = () => {
   const animation = useRef(null);
 
   return (
@@ -20,11 +16,12 @@ export const Loading: React.FC<LoadingProps> = ({
         autoPlay
         ref={animation}
         style={{
-          width: scale(widht),
-          height: scale(height),
+          width: scale(200),
+          height: scale(200),
         }}
-        source={animationLoading}
+        source={animationError}
       />
+      <Title>Opps!</Title>
     </Container>
   );
 };

@@ -1,5 +1,7 @@
 import React from "react";
 
+import { formatMoney } from "../../shared/utils/formatMoney";
+import { formatNumberToPercent } from "../../shared/utils/formatNumberToPercent";
 import { CryptoCardProps } from "./types";
 
 import {
@@ -16,26 +18,37 @@ import {
   NamesContainer,
 } from "./styles";
 
-export const CryptoCard: React.FC<CryptoCardProps> = () => {
+export const CryptoCard: React.FC<CryptoCardProps> = ({
+  logo,
+  symbol,
+  name,
+  price,
+  priceVariation,
+}) => {
   return (
     <Container>
       <CryptoInfosContainer>
         <CryptoLogo
           source={{
-            uri: "https://logodownload.org/wp-content/uploads/2017/06/bitcoin-logo-1-1.png",
+            uri: logo,
           }}
+          resizeMode="contain"
         />
         <NamesContainer>
-          <CryptoSymbol>BTC</CryptoSymbol>
-          <CryptoName>Bitcoin</CryptoName>
+          <CryptoSymbol>{symbol}</CryptoSymbol>
+          <CryptoName>{name}</CryptoName>
         </NamesContainer>
       </CryptoInfosContainer>
       <CriptoPriceContainer>
-        <CryptoPrice>R$ 200.000,00</CryptoPrice>
+        <CryptoPrice>{formatMoney(price)}</CryptoPrice>
         <CryptoPriceVariationContainer>
-          {/* <Icon name="arrow-bottom-left" isUp={true} /> */}
-          <Icon name="arrow-top-right" isUp={true} />
-          <CryptoPriceVariation>+ 10%</CryptoPriceVariation>
+          <Icon
+            name={priceVariation < 0 ? "arrow-bottom-left" : "arrow-top-right"}
+            isUp={priceVariation >= 0}
+          />
+          <CryptoPriceVariation isUp={priceVariation >= 0}>
+            {formatNumberToPercent(priceVariation)}
+          </CryptoPriceVariation>
         </CryptoPriceVariationContainer>
       </CriptoPriceContainer>
     </Container>

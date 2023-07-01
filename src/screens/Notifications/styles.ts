@@ -6,3 +6,7 @@ export const Container = styled.View`
   padding: 0 ${scale(16)}px;
   margin-top: ${scale(16)}px;
 `;
+
+export const Separator = styled.View`
+  height: ${scale(16)}px;
+`;

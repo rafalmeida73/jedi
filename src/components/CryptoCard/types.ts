@@ -1,4 +1,4 @@
-export interface ArrowIconProps {
+export interface PriceVariationProps {
   isUp: boolean;
 }
 

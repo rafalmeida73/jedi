@@ -49,7 +49,7 @@ export function Routes() {
             position: "absolute",
             height: scale(70),
             marginHorizontal: scale(20),
-            bottom: scale(15),
+            bottom: scale(20),
             borderRadius: scale(30),
             borderColor: theme.colors.background.secondary,
           },

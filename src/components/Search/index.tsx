@@ -4,6 +4,7 @@ import { FormHandles } from "@unform/core";
 import { Keyboard } from "react-native";
 import * as Yup from "yup";
 
+import { useCryptos } from "../../shared/hooks/useCryptos";
 import Input from "../Input";
 import { schema } from "./Validations";
 
@@ -12,31 +13,36 @@ import { FormContainer } from "./styles";
 export const Search = () => {
   const formRef = useRef<FormHandles>(null);
 
-  const handleSubmit = useCallback(async (formData) => {
-    Keyboard.dismiss();
+  const { handleSeachCryptos } = useCryptos();
 
-    try {
-      formRef.current.setErrors({});
+  const handleSubmit = useCallback(
+    async (formData) => {
+      Keyboard.dismiss();
 
-      await schema.validate(formData, {
-        abortEarly: false,
-      });
+      try {
+        formRef.current.setErrors({});
 
-      console.log(formData);
-
-      formRef.current.clearField("search");
-    } catch (err) {
-      const validationErrors = {};
-
-      if (err instanceof Yup.ValidationError) {
-        err.inner.forEach((error) => {
-          validationErrors[error.path] = error.message;
+        await schema.validate(formData, {
+          abortEarly: false,
         });
+        console.log(formData.search);
+        handleSeachCryptos(formData.search);
 
-        return formRef?.current?.setErrors(validationErrors);
+        formRef.current.clearField("search");
+      } catch (err) {
+        const validationErrors = {};
+
+        if (err instanceof Yup.ValidationError) {
+          err.inner.forEach((error) => {
+            validationErrors[error.path] = error.message;
+          });
+
+          return formRef?.current?.setErrors(validationErrors);
+        }
       }
-    }
-  }, []);
+    },
+    [handleSeachCryptos]
+  );
 
   return (
     <FormContainer ref={formRef} onSubmit={handleSubmit}>

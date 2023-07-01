@@ -1,9 +1,12 @@
+import { Platform } from "react-native";
 import { scale } from "react-native-size-matters";
 import styled, { css } from "styled-components/native";
 
 export const IconContainer = styled.View`
   justify-content: center;
   align-items: center;
+  margin-top: ${Platform.OS === "ios" ? scale(20) : 0}px;
+  height: 100%;
 `;
 
 export const Circle = styled.View`
