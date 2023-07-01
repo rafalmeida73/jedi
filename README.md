@@ -20,3 +20,6 @@ yarn android
 npm run ios
 # or
 yarn ios
+
+
+![Alt text]("./src/assets/ios.png") 
